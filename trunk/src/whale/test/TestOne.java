@@ -18,5 +18,6 @@ public class TestOne extends Activity {
 	public boolean onTouchEvent(MotionEvent event) {
 		
 		return super.onTouchEvent(event);
+		
 	}
 }
