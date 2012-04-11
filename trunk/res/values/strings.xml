@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">无线鼠标</string>
+    <string name="Err_Message_SearchServerIPFail">无法自动取得PC机的IP地址，请手动输入。</string>
+    <string name="Err_Message_InvildIPFormat">无效的IP地址。</string>
+    
+    <string name="txt_Button_Connect">连 接</string>
+    <color name="red">#FF0000</color>
+</resources>
