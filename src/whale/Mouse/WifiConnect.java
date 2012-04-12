@@ -3,7 +3,7 @@ package whale.Mouse;
 import java.net.InetAddress;
 import java.util.regex.Pattern;
 
-import whale.utility.UDPSocket;
+import whale.tools.*;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;

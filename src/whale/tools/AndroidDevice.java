@@ -1,4 +1,4 @@
-package whale.utility;
+package whale.tools;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;

@@ -1,4 +1,4 @@
-package whale.utility;
+package whale.tools;
 
 
 /**
