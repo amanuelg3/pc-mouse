@@ -1,4 +1,4 @@
-package whale.utility;
+package whale.tools;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
