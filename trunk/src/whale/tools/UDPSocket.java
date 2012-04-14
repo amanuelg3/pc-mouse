@@ -12,16 +12,27 @@ import java.net.UnknownHostException;
  * UDP Socket操作类
  */
 public class UDPSocket {
+	
 	private DatagramSocket socket=null; //定义udp 协议的Socket
-	private int remotePort; //定义远程端口号
 
-	//#region 远程IP地址
+	//#region 远程地址
+	
+	//定义远程IP
 	private InetAddress remoteAddress=null; 
 	public InetAddress getRemoteAddress() {
 		return remoteAddress;
 	}
 	public void setRemoteAddress(InetAddress remoteAddress) {
 		this.remoteAddress = remoteAddress;
+	}
+	
+	//定义远程端口号
+	private int remotePort;
+	public int getRemotePort() {
+		return remotePort;
+	}
+	public void setRemotePort(int remotePort) {
+		this.remotePort = remotePort;
 	}
 	//#endregion
 	
@@ -31,7 +42,6 @@ public class UDPSocket {
 	 */
 	public UDPSocket(int port){
 		try {
-			remotePort=3334;
 			socket=new DatagramSocket(port);
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
@@ -61,6 +71,8 @@ public class UDPSocket {
 		}
 	}
 
+	
+	
 	/**
 	 * 发送广播消息
 	 */
@@ -68,12 +80,9 @@ public class UDPSocket {
 		try {
 			InetAddress inetAddress=AndroidDevice.getLocalAddress();
 			if (inetAddress!=null){
-				byte[] ip=inetAddress.getAddress();
-				ip[3]=(byte)255;
-				remoteAddress=InetAddress.getByAddress(ip);
-				
 				byte[] data={100,0,0,0,0,0,0,0,100};
 				System.arraycopy(inetAddress.getAddress(), 0, data, 1, 4);
+				setRemoteAddress(InetAddress.getByName("255,255,255,255"));
 				Send(data);
 			}
 		} catch (UnknownHostException e) {
@@ -113,7 +122,6 @@ public class UDPSocket {
 				}
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
