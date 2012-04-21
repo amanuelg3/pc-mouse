@@ -11,6 +11,11 @@ public class Wifi implements ICommunication {
 	private UDPSocket socket;
 	
 	public Wifi() {
+		Start();
+	}
+
+	@Override
+	public void Start() {
 		socket=new UDPSocket(Const.LOCAL_PORT);
 		try {
 			socket.setRemoteAddress(InetAddress.getByName(Const.CONFIG.getServerip()));

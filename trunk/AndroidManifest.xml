@@ -6,7 +6,7 @@
 	<application android:icon="@drawable/icon" android:label="@string/app_name"
 		android:theme="@android:style/Theme.Black.NoTitleBar">
 		<activity android:name="whale.Mouse.Activity.Main" android:screenOrientation="portrait"></activity>
-		<activity android:name="whale.Mouse.Activity.Setup" android:screenOrientation="portrait">
+		<activity android:name="whale.Mouse.Activity.Setup" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
@@ -15,4 +15,6 @@
 	</application>
 	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+	<uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
 </manifest>

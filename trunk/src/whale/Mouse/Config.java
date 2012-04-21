@@ -16,6 +16,7 @@ public class Config {
 	 */
 	private ConnectionType connectionType;
 	private String serverip;
+	private String bluetoothName;
 
 	//#region 访问器
 	/**
@@ -47,13 +48,23 @@ public class Config {
 	public void setServerip(String serverip) {
 		this.serverip = serverip;
 	}
+	
+	public String getBluetoothName() {
+		return bluetoothName;
+	}
+
+	public void setBluetoothName(String bluetoothName) {
+		this.bluetoothName = bluetoothName;
+	}
 	//#endregion
 
 	@Override
 	public String toString() {
-		return "Config [connectionType=" + connectionType + ", serverip="
-				+ serverip + "]";
+		return "Config [bluetoothName=" + bluetoothName + ", connectionType="
+				+ connectionType + ", serverip=" + serverip + "]";
 	}
+	
+
 	/**
 	 * 通过xml取得一个配置文件
 	 * @return
@@ -71,6 +82,8 @@ public class Config {
 		}
 		return null;
 	}
+	
+
 	/**
 	 * 将配置写到SD中保存
 	 * @param config
@@ -95,6 +108,8 @@ public class Config {
 			e.printStackTrace();
 		}
 	}
+	
+
 	/**
 	 * 定义连接类型
 	 */
