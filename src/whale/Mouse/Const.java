@@ -11,4 +11,5 @@ public class Const {
 	public static final Config CONFIG=Config.GetConfig();
 	
 	public static boolean ISDOUBLEFINGER=false;
+	public static String BROADCASTACTION="whale.wirelesskeyboardmouse.message";
 }

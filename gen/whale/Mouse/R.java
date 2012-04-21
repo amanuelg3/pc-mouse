@@ -14,26 +14,75 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int red=0x7f060000;
+        public static final int red=0x7f070000;
+        public static final int setup_background=0x7f070001;
+        public static final int setup_list_text=0x7f070003;
+        public static final int setup_title=0x7f070002;
+        public static final int split_line_Black=0x7f070004;
+        public static final int split_line_White=0x7f070005;
     }
     public static final class drawable {
-        public static final int border=0x7f020000;
-        public static final int icon=0x7f020001;
-        public static final int mainbg=0x7f020002;
+        public static final int about=0x7f020000;
+        public static final int bluetooth=0x7f020001;
+        public static final int bluetoothlight=0x7f020002;
+        public static final int border=0x7f020003;
+        public static final int border_corners=0x7f020004;
+        public static final int exit=0x7f020005;
+        public static final int icon=0x7f020006;
+        public static final int keyboard=0x7f020007;
+        public static final int mainbg=0x7f020008;
+        public static final int mbg=0x7f020009;
+        public static final int set=0x7f02000a;
+        public static final int wifi=0x7f02000b;
+        public static final int wifilight=0x7f02000c;
     }
     public static final class id {
-        public static final int btn=0x7f070002;
-        public static final int etServerIP=0x7f070001;
-        public static final int lltMain=0x7f070000;
+        public static final int btnBackspace=0x7f08000c;
+        public static final int btnSave=0x7f080010;
+        public static final int btnSend=0x7f08000b;
+        public static final int cbBlueToothName=0x7f080000;
+        public static final int etKey=0x7f08000a;
+        public static final int etServerIP=0x7f08000f;
+        public static final int imbAbout=0x7f080005;
+        public static final int imbBluetooth=0x7f080003;
+        public static final int imbExit=0x7f080007;
+        public static final int imbKeyboard=0x7f080004;
+        public static final int imbSetup=0x7f080006;
+        public static final int imbWifi=0x7f080002;
+        public static final int lltInputArea=0x7f080009;
+        public static final int lltMain=0x7f080008;
+        public static final int rgBlueToothList=0x7f08000e;
+        public static final int rgConnectType=0x7f08000d;
+        public static final int tvBlueToothName=0x7f080001;
     }
     public static final class layout {
-        public static final int main=0x7f030000;
-        public static final int setup=0x7f030001;
+        public static final int about=0x7f030000;
+        public static final int bluetoothlistitem=0x7f030001;
+        public static final int main=0x7f030002;
+        public static final int setup=0x7f030003;
     }
     public static final class string {
-        public static final int Err_Message_InvildIPFormat=0x7f050002;
-        public static final int Err_Message_SearchServerIPFail=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int txt_Button_Connect=0x7f050003;
+        public static final int Err_Message_BlueToothConnectFail=0x7f060004;
+        public static final int Err_Message_InvildIPFormat=0x7f060002;
+        public static final int Err_Message_NoPairBlueTooth=0x7f060003;
+        public static final int Err_Message_SearchServerIPFail=0x7f060001;
+        public static final int app_name=0x7f060000;
+        public static final int txt_Dialog_About_Author=0x7f060009;
+        public static final int txt_Dialog_About_Title=0x7f060008;
+        public static final int txt_Dialog_About_Version=0x7f06000a;
+        public static final int txt_btnBackspace=0x7f060006;
+        public static final int txt_btnSave=0x7f060007;
+        public static final int txt_btnSend=0x7f060005;
+        public static final int txt_setup_ConnectType_BlueTooth=0x7f06000f;
+        public static final int txt_setup_ConnectType_Wifi=0x7f06000e;
+        public static final int txt_setup_title_BlueTooth=0x7f06000d;
+        public static final int txt_setup_title_ConnectType=0x7f06000b;
+        public static final int txt_setup_title_ServerIP=0x7f06000c;
+    }
+    public static final class style {
+        public static final int Row=0x7f050000;
+        public static final int frameStyle=0x7f050001;
+        public static final int rbItem=0x7f050003;
+        public static final int tvTitle=0x7f050002;
     }
 }

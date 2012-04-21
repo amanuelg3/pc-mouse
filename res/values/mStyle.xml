@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<style name="Row">
+	<item name="android:layout_width">fill_parent</item>
+	<item name="android:layout_height">wrap_content</item>
+</style>
+<style name="frameStyle" parent="@Row">
+	<item name="android:padding">10dp</item>
+	<item name="android:background">@drawable/border_corners</item>
+	<item name="android:layout_marginBottom">10dp</item>
+</style>
+<style name="tvTitle" parent="@Row">
+	<item name="android:textSize">7pt</item>
+	<item name="android:textColor">@color/setup_title</item>
+</style>
+<style name="rbItem" parent="@Row">
+	<item name="android:textColor">@color/setup_list_text</item>
+</style>
+</resources>

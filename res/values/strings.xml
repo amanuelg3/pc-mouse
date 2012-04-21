@@ -3,7 +3,28 @@
     <string name="app_name">无线鼠标</string>
     <string name="Err_Message_SearchServerIPFail">无法自动取得PC机的IP地址，请手动输入。</string>
     <string name="Err_Message_InvildIPFormat">无效的IP地址。</string>
+    <string name="Err_Message_NoPairBlueTooth">没有配对的蓝牙设备</string>
+    <string name="Err_Message_BlueToothConnectFail">连接电脑的蓝牙失败</string>
     
-    <string name="txt_Button_Connect">连 接</string>
+    <string name="txt_btnSend">发送内容到电脑</string>
+    <string name="txt_btnBackspace">←退格键</string>
+    <string name="txt_btnSave">保  存 (Save)</string>
+    
+    <string name="txt_Dialog_About_Title">关于</string>
+    <string name="txt_Dialog_About_Author">作者：whale </string>
+    <string name="txt_Dialog_About_Version">版本：1.0.0 </string>
+    
+    <string name="txt_setup_title_ConnectType">默认连接类型</string>
+    <string name="txt_setup_title_ServerIP">电脑的IP地址</string>
+    <string name="txt_setup_title_BlueTooth">选择蓝牙设备</string>
+    <string name="txt_setup_ConnectType_Wifi">网络(Wifi)</string>
+    <string name="txt_setup_ConnectType_BlueTooth">蓝牙(BlueTooth)</string>
+    
+    
     <color name="red">#FF0000</color>
+    <color name="setup_background">#e6e6e6</color>
+    <color name="setup_title">#9e9e9e</color>
+    <color name="setup_list_text">#313131</color>
+    <color name="split_line_Black">#dedede</color>
+    <color name="split_line_White">#fdfdfd</color>
 </resources>

@@ -2,12 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <EditText android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	android:id="@+id/etServerIP" />
-    <Button android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	android:text="Go"
-    	android:id="@+id/btn"/>	
+    android:layout_height="fill_parent"
+    android:scrollbars="vertical"
+    android:padding="10dp"
+    android:background="@color/setup_background">
+	<RadioGroup style="@style/frameStyle" android:id="@+id/rgConnectType" >
+	    <TextView style="@style/tvTitle" android:text="@string/txt_setup_title_ConnectType" />
+	    <RadioButton style="@style/rbItem" android:checked="true" 
+	    	android:text="@string/txt_setup_ConnectType_Wifi" android:id="@android:id/button1"/>
+	    <LinearLayout android:layout_width="fill_parent" android:layout_height="1px" android:background="@color/split_line_Black"/>
+	    <LinearLayout android:layout_width="fill_parent" android:layout_height="1px" android:background="@color/split_line_White"/>
+	    <RadioButton style="@style/rbItem" android:id="@android:id/button2"
+	    	android:text="@string/txt_setup_ConnectType_BlueTooth"  />
+	</RadioGroup>
+    <RadioGroup style="@style/frameStyle" android:id="@+id/rgBlueToothList">
+	    <TextView style="@style/tvTitle" android:text="@string/txt_setup_title_BlueTooth" />
+	</RadioGroup>
+	<LinearLayout style="@style/frameStyle" android:orientation="vertical">
+	    <TextView style="@style/tvTitle" android:text="@string/txt_setup_title_ServerIP"/>
+	    <EditText style="@style/Row" android:id="@+id/etServerIP" android:singleLine="true" />
+	</LinearLayout>
+    <Button style="@style/Row" android:text="@string/txt_btnSave" android:id="@+id/btnSave"/>
 </LinearLayout>

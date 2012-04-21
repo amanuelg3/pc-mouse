@@ -2,14 +2,59 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/mainbg">
+    android:layout_height="fill_parent">
     <LinearLayout android:orientation="horizontal"
     	android:layout_width="fill_parent"
-    	android:layout_height="44dp">
+    	android:layout_height="43.3dp">
+    	<ImageButton android:layout_width="53.3dp"
+    	 	android:layout_height="fill_parent"
+    	 	android:background="@drawable/wifi"
+    	 	android:id="@+id/imbWifi" />
+    	<ImageButton android:layout_width="53.3dp"
+    	 	android:layout_height="fill_parent"
+    	 	android:background="@drawable/bluetooth"
+    	 	android:id="@+id/imbBluetooth" />
+    	<ImageButton android:layout_width="53.3dp"
+    	 	android:layout_height="fill_parent"
+    	 	android:background="@drawable/keyboard"
+    	 	android:id="@+id/imbKeyboard" />
+    	<ImageButton android:layout_width="53.3dp"
+    	 	android:layout_height="fill_parent"
+    	 	android:background="@drawable/about"
+    	 	android:id="@+id/imbAbout" />
+    	<ImageButton android:layout_width="53.3dp"
+    	 	android:layout_height="fill_parent"
+    	 	android:background="@drawable/set"
+    	 	android:id="@+id/imbSetup" />
+    	<ImageButton android:layout_width="53.3dp"
+    	 	android:layout_height="fill_parent"
+    	 	android:background="@drawable/exit"
+    	 	android:id="@+id/imbExit" />
     </LinearLayout>
     <LinearLayout android:layout_width="fill_parent"
     	android:id="@+id/lltMain"
-    	android:layout_height="fill_parent">
+    	android:layout_height="fill_parent"
+    	android:background="@drawable/mbg">
+    	<LinearLayout android:orientation="vertical"
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:visibility="invisible"
+    		android:id="@+id/lltInputArea">
+    		<EditText android:layout_width="fill_parent"
+    			android:layout_height="wrap_content"
+    			android:id="@+id/etKey"/>
+    		<LinearLayout android:orientation="horizontal"
+    		 	android:layout_width="fill_parent"
+    		 	android:layout_height="wrap_content">
+    		 	<Button android:layout_width="200dp"
+    				android:layout_height="wrap_content"
+    				android:text="@string/txt_btnSend"
+    				android:id="@+id/btnSend" />
+    			<Button android:layout_width="120dp"
+    				android:layout_height="wrap_content"
+    				android:text="@string/txt_btnBackspace"
+    				android:id="@+id/btnBackspace" />
+    		</LinearLayout>
+    	</LinearLayout>"
     </LinearLayout>
 </LinearLayout>

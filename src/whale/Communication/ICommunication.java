@@ -1,7 +1,7 @@
 package whale.Communication;
 
 public interface ICommunication {
-	void Send(byte[] data);
-	
+	void Start();
 	void Close();
+	void Send(byte[] data);
 }
