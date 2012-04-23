@@ -13,12 +13,15 @@ import android.bluetooth.BluetoothSocket;
 
 public class BlueTooth implements ICommunication {
 	
-	private BluetoothAdapter adapter;
+	
 	private BluetoothDevice device;
 	private BluetoothSocket socket;
 	private OutputStream os;
 	
+	private BluetoothAdapter adapter;
 	public BluetoothAdapter getAdapter() {
+		if (adapter==null)
+			adapter=BluetoothAdapter.getDefaultAdapter();
 		return adapter;
 	}
 
@@ -26,18 +29,14 @@ public class BlueTooth implements ICommunication {
 		this.adapter = adapter;
 	}
 
-	public BlueTooth(){
-		Start();
-	}
+	public BlueTooth(){}
 
 	/**
 	 * 取得配对的蓝牙列表
 	 */
 	public Set<BluetoothDevice> GetPairList(){
-		if (adapter==null)
-			adapter=BluetoothAdapter.getDefaultAdapter();
-		if (adapter!=null){
-			Set<BluetoothDevice> bluetoothDevices=adapter.getBondedDevices();
+		if (getAdapter()!=null){
+			Set<BluetoothDevice> bluetoothDevices=getAdapter().getBondedDevices();
 			if (bluetoothDevices.size()>0){
 				return bluetoothDevices;	
 			}

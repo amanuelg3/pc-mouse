@@ -11,7 +11,7 @@ public class Wifi implements ICommunication {
 	private UDPSocket socket;
 	
 	public Wifi() {
-		Start();
+		//Start();
 	}
 
 	@Override
