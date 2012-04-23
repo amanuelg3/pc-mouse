@@ -1,25 +1,18 @@
 package whale.Mouse.Activity;
 
-import java.util.Iterator;
-import java.util.Set;
-
 import whale.Communication.BlueTooth;
+import whale.Mouse.AsyncBlueToothOperation;
 import whale.Mouse.Const;
 import whale.Mouse.R;
 import whale.Mouse.Config.ConnectionType;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -29,6 +22,8 @@ public class Setup extends Activity {
 	Button btnSave;
 	RadioGroup rgConnectType,rgBlueToothList;
 	Resources resource;  
+	boolean isFirst=true;
+	BlueTooth blt=new BlueTooth();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +38,13 @@ public class Setup extends Activity {
 		btnSave.setOnClickListener(new onBtnSaveClick());
 		
 		Intent intent=getIntent();
-		if (!intent.getAction().equalsIgnoreCase("Setup") && Const.CONFIG!=null){
+		if (intent.getAction().equalsIgnoreCase("Setup")){
+			isFirst=false;
+		}else if (Const.CONFIG!=null){
 			startActivity(new Intent().setClass(Setup.this, Main.class));
 			finish();
-			return;
+			return;		
 		}
-			
 		Init();
 	}
 	
@@ -57,65 +53,37 @@ public class Setup extends Activity {
 		if (Const.CONFIG!=null){
 			etServerIP.setText(Const.CONFIG.getServerip());
 			rgConnectType.check(Const.CONFIG.getConnectionType()==ConnectionType.WIFI?android.R.id.button1:android.R.id.button2);
-			
-			int n= rgBlueToothList.getChildCount();
-			for (int i = 0; i < n; i++) {
-				View vw = rgBlueToothList.getChildAt(i);
-				if (vw instanceof RadioButton){
-					RadioButton rb=(RadioButton)vw;
-					if (Const.CONFIG.getBluetoothName().equals(rb.getText().toString())){
-						rb.setChecked(true);
-						break;
-					}
-				}
-			}
 		}
 	}
 	
 	private void BlueToothInit(){
-		
-		BlueTooth blt=new BlueTooth();
 		BluetoothAdapter adapter=blt.getAdapter();
 		if (adapter.isEnabled()){
-			ScanBlueToothDevice(blt);
+			ScanBlueToothDevice();
 		}else
 		{
 			Intent intent=new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-			startActivity(intent);
+			startActivityForResult(intent, 1);
 		}
 	}
 	
-	private void ScanBlueToothDevice(BlueTooth blt) {
-		Set<BluetoothDevice> list = blt.GetPairList();
-		if (list != null) {
-			int i=0;
-			for (Iterator<BluetoothDevice> iterator = list.iterator(); iterator.hasNext();) {
-				BluetoothDevice bluetoothDevice = (BluetoothDevice) iterator.next();
-				
-				//添加分隔线
-				if (i!=0){
-					LinearLayout llt1=new LinearLayout(Setup.this);
-					llt1.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 1));
-					llt1.setBackgroundResource(R.color.split_line_Black);
-					LinearLayout llt2=new LinearLayout(Setup.this);
-					llt2.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 1));
-					llt2.setBackgroundResource(R.color.split_line_White);
-					rgBlueToothList.addView(llt1);
-					rgBlueToothList.addView(llt2);
-				}
-				
-				//添加一个蓝牙设备到列表
-				RadioButton rb=new RadioButton(Setup.this);
-				rb.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
-				rb.setTextColor((ColorStateList) resource.getColorStateList(R.color.setup_list_text));
-				rb.setText(bluetoothDevice.getName());
-				rgBlueToothList.addView(rb);
-				
-				i++;
-			}
-		}
+	/**
+	 * 显示配对的蓝牙列表
+	 * @param blt
+	 */
+	private void ScanBlueToothDevice() {
+		AsyncBlueToothOperation async=new AsyncBlueToothOperation(Setup.this, blt);
+		async.execute(1);
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode==-1){
+			ScanBlueToothDevice();
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+	
 	/**
 	 * 保存设置
 	 */
@@ -161,9 +129,11 @@ public class Setup extends Activity {
 			} //取用户选择的蓝牙设备
 			Const.CONFIG.SaveConfig();
 			
-			Intent intent=new Intent();
-			intent.setClass(Setup.this, Main.class);
-			startActivity(intent);
+			if(isFirst){
+				Intent intent=new Intent();
+				intent.setClass(Setup.this, Main.class);
+				startActivity(intent);	
+			}
 			finish();
 		}
 	}

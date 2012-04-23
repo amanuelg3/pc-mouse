@@ -40,6 +40,7 @@ public class Main extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //禁用系统休眠
 		im=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 		
@@ -128,7 +129,6 @@ public class Main extends Activity {
 	 * 连接类型切换
 	 */
 	private void CommunicationSwitch(ConnectionType connectionType){
-		if (communication!=null) communication.Close();
 		if (connectionType==ConnectionType.BLUETOOTH)
 		{
 			imbWifi.setBackgroundResource(R.drawable.wifi);
@@ -139,8 +139,22 @@ public class Main extends Activity {
 			imbBlueTooth.setBackgroundResource(R.drawable.bluetooth);
 			Const.CONFIG.setConnectionType(ConnectionType.WIFI);
 		}
-		Const.CONFIG.SaveConfig();
+
+		if (connectionType!=Const.CONFIG.getConnectionType()) Const.CONFIG.SaveConfig();
+	}
+	
+	@Override
+	protected void onResume() {
+		if (communication!=null) communication.Close();
 		communication= CommunicationFactory.NewCommunication(Const.CONFIG.getConnectionType());
+		communication.Start();
 		lltMain.setOnTouchListener(new OnTouchListener(communication));
+		super.onResume();
+	}
+	
+	@Override
+	protected void onPause() {
+		communication.Close();
+		super.onPause();
 	}
 }
